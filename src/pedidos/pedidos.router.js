@@ -1,15 +1,24 @@
 import { Router } from 'express';
-import { createPedido, deletePedido, readPedido, updatePedido } from './pedidos.controller';
+import {
+  createPedido,
+  deletePedido,
+  readPedido,
+  readPedidos,
+  updatePedido,
+} from './pedidos.controller';
 
 const routerPedidos = Router();
 
 //Create
 routerPedidos.post('/', createPedido);
 //Read
-routerPedidos.get('/', readPedido);
+routerPedidos.get('/:id', readPedido);
+routerPedidos.get('/', readPedidos);
+routerPedidos.get('/enviado', readPedidos);
+
 //Update
-routerPedidos.patch('/', updatePedido);
+routerPedidos.patch('/:id', updatePedido);
 //Delete
-routerPedidos.delete('/', deletePedido);
+routerPedidos.delete('/:id', deletePedido);
 
 export default routerPedidos;

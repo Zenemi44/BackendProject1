@@ -3,6 +3,7 @@ import {
   createProducto,
   deleteProducto,
   readProducto,
+  readProductos,
   updateProducto,
 } from './productos.controller';
 
@@ -11,10 +12,11 @@ const routerProductos = Router();
 //Create
 routerProductos.post('/', createProducto);
 //Read
-routerProductos.get('/', readProducto);
+routerProductos.get('/:id', readProducto);
+routerProductos.get('/', readProductos);
 //Update
-routerProductos.patch('/', updateProducto);
+routerProductos.patch('/:id', updateProducto);
 //Delete
-routerProductos.delete('/', deleteProducto);
+routerProductos.delete('/:id', deleteProducto);
 
 export default routerProductos;

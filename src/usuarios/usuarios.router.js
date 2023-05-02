@@ -1,15 +1,22 @@
 import { Router } from 'express';
-import { createUsuario, deleteUsuario, readUsuario, updateUsuario } from './usuarios.controller';
+import {
+  createUsuario,
+  deleteUsuario,
+  readUserByMailAndPassword,
+  readUsuario,
+  updateUsuario,
+} from './usuarios.controller';
 
 const routerUsuarios = Router();
 
 //Create
 routerUsuarios.post('/', createUsuario);
 //Read
-routerUsuarios.get('/', readUsuario);
+routerUsuarios.get('/:id', readUsuario);
+routerUsuarios.get('/:mail/:password', readUserByMailAndPassword);
 //Update
-routerUsuarios.patch('/', updateUsuario);
+routerUsuarios.patch('/:id', updateUsuario);
 //Delete
-routerUsuarios.delete('/', deleteUsuario);
+routerUsuarios.delete('/:id', deleteUsuario);
 
 export default routerUsuarios;
